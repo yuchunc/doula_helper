@@ -1,0 +1,14 @@
+.idea
+.project
+*.sublime-*
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.swo
+node_modules
+coverage
+*.tgz
+*.xml
