@@ -8,6 +8,10 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+// This should refer to the local React and gets installed via `npm install` in the example.
+var reactViews = require('express-react-views');
+
+
 var app = express();
 
 // view engine setup
