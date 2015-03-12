@@ -8,11 +8,16 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+// This should refer to the local React and gets installed via `npm install` in the example.
+var reactViews = require('express-react-views');
+
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -35,6 +40,7 @@ app.use(function (req, res, next) {
 });
 
 // error handlers
+
 
 // development error handler
 // will print stacktrace
