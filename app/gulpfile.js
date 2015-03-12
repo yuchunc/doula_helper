@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var browserify = require('browserify');
+// var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var minifyCSS = require('gulp-minify-css');
 var livereload = require('gulp-livereload');
@@ -21,35 +21,35 @@ var paths = {
 };
 
 /**
- * 
+ *
  */
 gulp.task('bundle-js', function() {
-    
+
     // console.log( '\nbundle-js 跑' );
 
-    return browserify({
-        entries:[ paths.main ]
-    })
+    // return browserify({
+        // entries:[ paths.main ]
+    // })
 
     // 最優先編譯 jsx，確保後面其它 transform 運行無誤
-    .transform( 'reactify' )
+    // .transform( 'reactify' )
 
     // 所有檔案合併為一，並指定要生成 source map
-    .bundle({debug: true})
+    // .bundle({debug: true})
 
-    .on('error', function( err ){
-        console.log( '[錯誤]', err );
-        this.end();
-        gulp.src('').pipe( notify('✖ Bunlde Failed ✖') )
-    })
-    
-    // 利用 vinyl-source-stream 幫檔案取名字
-    .pipe( source('bundle.js') )
-    
-    // 接著就回到 gulp 系統做剩下事
-    // 這裏是直接存檔到硬碟
-    .pipe( gulp.dest('./build') )
-    
+    // .on('error', function( err ){
+    //     console.log( '[錯誤]', err );
+    //     this.end();
+    //     gulp.src('').pipe( notify('✖ Bunlde Failed ✖') )
+    // })
+
+    // // 利用 vinyl-source-stream 幫檔案取名字
+    // .pipe( source('bundle.js') )
+
+    // // 接著就回到 gulp 系統做剩下事
+    // // 這裏是直接存檔到硬碟
+    // .pipe( gulp.dest('./build') )
+
 });
 
 /**
@@ -82,7 +82,7 @@ gulp.task('copy', function(){
  */
 gulp.task('watch', function() {
     // console.log( 'watch 跑' );
-    
+
     gulp.watch( 'app/**/*', ['bundle-js', 'minify-css', 'copy', 'refresh'] );
 });
 
